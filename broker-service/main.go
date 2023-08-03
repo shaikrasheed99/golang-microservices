@@ -10,7 +10,7 @@ func main() {
 
 	routes.RegisterRoutes(app)
 
-	port := ":3000"
+	port := ":8000"
 
 	app.Run(port)
 }
