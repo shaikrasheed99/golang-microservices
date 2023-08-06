@@ -31,7 +31,7 @@ func TestBrokerHandler_Health(t *testing.T) {
 
 		assert.Equal(t, constants.Success, resBody.Status)
 		assert.Equal(t, http.StatusText(http.StatusOK), resBody.Code)
-		assert.Equal(t, "UP", resBody.Message)
+		assert.Equal(t, constants.UP, resBody.Message)
 		assert.Equal(t, nil, resBody.Data)
 	})
 }

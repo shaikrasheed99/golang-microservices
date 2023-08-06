@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/shaikrasheed99/broker-service/constants"
 	"github.com/shaikrasheed99/broker-service/helpers"
 )
 
@@ -21,7 +22,7 @@ func NewBrokerHandler() IBrokerHandler {
 func (br *brokerHandler) Health(c *gin.Context) {
 	log.Println("[HealthHandler] Hitting health handler")
 
-	res := helpers.CreateSuccessResponse(http.StatusOK, "UP", nil)
+	res := helpers.CreateSuccessResponse(http.StatusOK, constants.UP, nil)
 
 	c.JSON(http.StatusOK, res)
 }
