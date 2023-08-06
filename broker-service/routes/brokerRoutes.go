@@ -6,6 +6,6 @@ import (
 	"github.com/shaikrasheed99/broker-service/handlers"
 )
 
-func RegisterRoutes(engine *gin.Engine) {
-	engine.GET(constants.HealthEndpoint, handlers.Health)
+func RegisterRoutes(engine *gin.Engine, h handlers.IBrokerHandler) {
+	engine.GET(constants.HealthEndpoint, h.Health)
 }
