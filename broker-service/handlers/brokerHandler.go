@@ -16,6 +16,8 @@ type IBrokerHandler interface {
 type brokerHandler struct{}
 
 func NewBrokerHandler() IBrokerHandler {
+	log.Println("[NewBrokerHandler] Creating new broker handler")
+
 	return &brokerHandler{}
 }
 
