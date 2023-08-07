@@ -7,3 +7,10 @@ services:
       dockerfile: ./Dockerfile
     ports:
      - "8000:8000"
+
+  authentication-service:
+    build:
+      context: ./authentication-service
+      dockerfile: ./Dockerfile
+    ports:
+      - "8001:8001"
