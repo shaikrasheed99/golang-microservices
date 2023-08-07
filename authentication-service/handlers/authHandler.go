@@ -16,6 +16,8 @@ type IAuthHandler interface {
 type authHandler struct{}
 
 func NewAuthHandler() IAuthHandler {
+	log.Println("[NewAuthHandler] Creating new auth handler")
+
 	return &authHandler{}
 }
 

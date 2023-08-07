@@ -1,6 +1,7 @@
 package helpers
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/shaikrasheed99/authentication-service/constants"
@@ -8,6 +9,8 @@ import (
 )
 
 func CreateSuccessResponse(code int, message string, data interface{}) responses.SuccessResponse {
+	log.Println("[CreateSuccessResponseHelper] Creating success response")
+
 	return responses.SuccessResponse{
 		Status:  constants.Success,
 		Code:    http.StatusText(code),
