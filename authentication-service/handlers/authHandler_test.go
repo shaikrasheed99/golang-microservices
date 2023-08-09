@@ -8,13 +8,15 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/shaikrasheed99/authentication-service/constants"
+	mocks "github.com/shaikrasheed99/authentication-service/mocks/services"
 	"github.com/shaikrasheed99/authentication-service/responses"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestAuthHandler_Health(t *testing.T) {
 	t.Run("should be able to up and running", func(t *testing.T) {
-		handler := NewAuthHandler()
+		mockAuthService := new(mocks.IAuthService)
+		handler := NewAuthHandler(mockAuthService)
 
 		router := gin.Default()
 		router.GET(constants.HealthEndpoint, handler.Health)

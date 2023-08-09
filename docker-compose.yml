@@ -7,6 +7,15 @@ services:
       dockerfile: ./Dockerfile
     ports:
      - "8000:8000"
+  
+  postgres-db:
+    image: postgres:14.1-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: users
+    ports:
+      - "5432:5432"
 
   authentication-service:
     build:
@@ -14,3 +23,13 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "8001:8001"
+    environment:
+      DB_HOST: postgres-db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: users
+    depends_on:
+      - postgres-db
+
+  

@@ -1,5 +1,6 @@
 package constants
 
 const (
-	HealthEndpoint = "/health"
+	SignupUserEndpoint = "/signup"
+	HealthEndpoint     = "/health"
 )

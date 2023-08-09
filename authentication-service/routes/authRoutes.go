@@ -8,8 +8,9 @@ import (
 	"github.com/shaikrasheed99/authentication-service/handlers"
 )
 
-func RegisterRoutes(engine *gin.Engine, h handlers.IAuthHandler) {
+func RegisterRoutes(engine *gin.Engine, ah handlers.IAuthHandler) {
 	log.Println("[RegisterRoutes] Registering routes")
 
-	engine.GET(constants.HealthEndpoint, h.Health)
+	engine.POST(constants.SignupUserEndpoint, ah.SignupHandler)
+	engine.GET(constants.HealthEndpoint, ah.Health)
 }
