@@ -1,7 +1,9 @@
 package handlers
 
 import (
+	"bytes"
 	"encoding/json"
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -9,9 +11,99 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/shaikrasheed99/authentication-service/constants"
 	mocks "github.com/shaikrasheed99/authentication-service/mocks/services"
+	"github.com/shaikrasheed99/authentication-service/models"
+	"github.com/shaikrasheed99/authentication-service/requests"
 	"github.com/shaikrasheed99/authentication-service/responses"
 	"github.com/stretchr/testify/assert"
 )
+
+func TestAuthHandler_SignupHandler(t *testing.T) {
+	reqMock := &requests.SignupRequest{
+		Username: "test",
+		Password: "test",
+		Email:    "test@gmail.com",
+	}
+	userMock := &models.User{
+		ID:       1,
+		Username: reqMock.Username,
+		Password: reqMock.Password,
+		Email:    reqMock.Email,
+	}
+
+	t.Run("should be able to signup a user", func(t *testing.T) {
+		mockAuthService := new(mocks.IAuthService)
+		mockAuthService.On("SaveUser", reqMock).Return(userMock, nil)
+
+		handler := NewAuthHandler(mockAuthService)
+
+		router := gin.Default()
+		router.POST(constants.SignupUserEndpoint, handler.SignupHandler)
+
+		body, _ := json.Marshal(reqMock)
+		req, _ := http.NewRequest("POST", constants.SignupUserEndpoint, bytes.NewBuffer(body))
+		res := httptest.NewRecorder()
+		router.ServeHTTP(res, req)
+
+		var resBody responses.SuccessResponse
+		_ = json.Unmarshal(res.Body.Bytes(), &resBody)
+
+		assert.Equal(t, constants.Success, resBody.Status)
+		assert.Equal(t, http.StatusText(http.StatusOK), resBody.Code)
+		assert.Equal(t, "successfully saved user details", resBody.Message)
+		assert.Equal(t, nil, resBody.Data)
+		mockAuthService.AssertExpectations(t)
+	})
+
+	t.Run("should not be able to signup a user when invalid request", func(t *testing.T) {
+		invalidReq := &requests.SignupRequest{
+			Username: "test",
+			Password: "test",
+		}
+
+		mockAuthService := new(mocks.IAuthService)
+
+		handler := NewAuthHandler(mockAuthService)
+
+		router := gin.Default()
+		router.POST(constants.SignupUserEndpoint, handler.SignupHandler)
+
+		body, _ := json.Marshal(invalidReq)
+		req, _ := http.NewRequest("POST", constants.SignupUserEndpoint, bytes.NewBuffer(body))
+		res := httptest.NewRecorder()
+		router.ServeHTTP(res, req)
+
+		var resBody responses.ErrorResponse
+		_ = json.Unmarshal(res.Body.Bytes(), &resBody)
+
+		assert.Equal(t, constants.Error, resBody.Status)
+		assert.Equal(t, http.StatusText(http.StatusBadRequest), resBody.Code)
+		mockAuthService.AssertExpectations(t)
+	})
+
+	t.Run("should not be able to signup a user when error from service", func(t *testing.T) {
+		serviceErr := errors.New("error from service")
+		mockAuthService := new(mocks.IAuthService)
+		mockAuthService.On("SaveUser", reqMock).Return(nil, serviceErr)
+
+		handler := NewAuthHandler(mockAuthService)
+
+		router := gin.Default()
+		router.POST(constants.SignupUserEndpoint, handler.SignupHandler)
+
+		body, _ := json.Marshal(reqMock)
+		req, _ := http.NewRequest("POST", constants.SignupUserEndpoint, bytes.NewBuffer(body))
+		res := httptest.NewRecorder()
+		router.ServeHTTP(res, req)
+
+		var resBody responses.ErrorResponse
+		_ = json.Unmarshal(res.Body.Bytes(), &resBody)
+
+		assert.Equal(t, constants.Error, resBody.Status)
+		assert.Equal(t, http.StatusText(http.StatusInternalServerError), resBody.Code)
+		assert.Equal(t, serviceErr.Error(), resBody.Message)
+		mockAuthService.AssertExpectations(t)
+	})
+}
 
 func TestAuthHandler_Health(t *testing.T) {
 	t.Run("should be able to up and running", func(t *testing.T) {

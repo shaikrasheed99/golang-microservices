@@ -39,7 +39,7 @@ func (ah *authHandler) SignupHandler(c *gin.Context) {
 		return
 	}
 
-	savedUser, err := ah.as.SaveUser(req)
+	_, err := ah.as.SaveUser(req)
 	if err != nil {
 		log.Println("[SignupHandler]", err.Error())
 		errRes := helpers.CreateErrorResponse(http.StatusInternalServerError, err.Error())
@@ -47,7 +47,7 @@ func (ah *authHandler) SignupHandler(c *gin.Context) {
 		return
 	}
 
-	res := helpers.CreateSuccessResponse(http.StatusOK, "successfully saved user details", savedUser.Username)
+	res := helpers.CreateSuccessResponse(http.StatusOK, "successfully saved user details", nil)
 
 	log.Println("[SignupHandler] Finished execution of signup handler")
 	c.JSON(http.StatusCreated, res)
