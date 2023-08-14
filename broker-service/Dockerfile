@@ -9,4 +9,6 @@ RUN go mod tidy
 
 COPY . . 
 
-CMD ["go", "run", "main.go"]
+ENTRYPOINT ["go", "run"]
+
+CMD ["main.go"]
