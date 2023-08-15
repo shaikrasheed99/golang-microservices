@@ -4,10 +4,10 @@ import (
 	"errors"
 	"log"
 
-	"github.com/shaikrasheed99/authentication-service/constants"
-	"github.com/shaikrasheed99/authentication-service/models"
-	"github.com/shaikrasheed99/authentication-service/repositories"
-	"github.com/shaikrasheed99/authentication-service/requests"
+	"github.com/shaikrasheed99/authentication-service/app/models/requests"
+	"github.com/shaikrasheed99/authentication-service/persistence/models"
+	"github.com/shaikrasheed99/authentication-service/persistence/repositories"
+	"github.com/shaikrasheed99/authentication-service/utils/constants"
 	"gorm.io/gorm"
 )
 

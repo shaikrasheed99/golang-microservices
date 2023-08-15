@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/shaikrasheed99/authentication-service/constants"
-	"github.com/shaikrasheed99/authentication-service/responses"
+	"github.com/shaikrasheed99/authentication-service/app/models/responses"
+	"github.com/shaikrasheed99/authentication-service/utils/constants"
 )
 
 func CreateSuccessResponse(code int, message string, data interface{}) responses.SuccessResponse {

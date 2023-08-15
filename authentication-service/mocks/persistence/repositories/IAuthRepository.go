@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	models "github.com/shaikrasheed99/authentication-service/models"
+	models "github.com/shaikrasheed99/authentication-service/persistence/models"
 	mock "github.com/stretchr/testify/mock"
 )
 

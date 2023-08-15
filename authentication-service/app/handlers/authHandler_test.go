@@ -9,12 +9,12 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
-	"github.com/shaikrasheed99/authentication-service/constants"
-	mocks "github.com/shaikrasheed99/authentication-service/mocks/services"
-	"github.com/shaikrasheed99/authentication-service/models"
-	"github.com/shaikrasheed99/authentication-service/requests"
-	"github.com/shaikrasheed99/authentication-service/responses"
-	"github.com/stretchr/testify/assert"
+	"github.com/shaikrasheed99/authentication-service/app/models/requests"
+	"github.com/shaikrasheed99/authentication-service/app/models/responses"
+	mocks "github.com/shaikrasheed99/authentication-service/mocks/app/services"
+	"github.com/shaikrasheed99/authentication-service/persistence/models"
+	"github.com/shaikrasheed99/authentication-service/utils/constants"
+	"gotest.tools/assert"
 )
 
 func TestAuthHandler_SignupHandler(t *testing.T) {

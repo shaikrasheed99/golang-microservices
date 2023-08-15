@@ -6,10 +6,10 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/shaikrasheed99/authentication-service/constants"
-	"github.com/shaikrasheed99/authentication-service/helpers"
-	"github.com/shaikrasheed99/authentication-service/requests"
-	"github.com/shaikrasheed99/authentication-service/services"
+	"github.com/shaikrasheed99/authentication-service/app/models/requests"
+	"github.com/shaikrasheed99/authentication-service/app/services"
+	"github.com/shaikrasheed99/authentication-service/utils/constants"
+	"github.com/shaikrasheed99/authentication-service/utils/helpers"
 )
 
 type IAuthHandler interface {

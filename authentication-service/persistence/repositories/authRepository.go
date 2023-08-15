@@ -3,7 +3,7 @@ package repositories
 import (
 	"log"
 
-	"github.com/shaikrasheed99/authentication-service/models"
+	"github.com/shaikrasheed99/authentication-service/persistence/models"
 	"gorm.io/gorm"
 )
 

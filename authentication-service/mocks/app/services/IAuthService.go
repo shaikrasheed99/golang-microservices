@@ -3,8 +3,8 @@
 package mocks
 
 import (
-	models "github.com/shaikrasheed99/authentication-service/models"
-	requests "github.com/shaikrasheed99/authentication-service/requests"
+	requests "github.com/shaikrasheed99/authentication-service/app/models/requests"
+	models "github.com/shaikrasheed99/authentication-service/persistence/models"
 	mock "github.com/stretchr/testify/mock"
 )
 

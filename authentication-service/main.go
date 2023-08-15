@@ -4,12 +4,12 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
+	"github.com/shaikrasheed99/authentication-service/app/handlers"
+	"github.com/shaikrasheed99/authentication-service/app/routes"
+	"github.com/shaikrasheed99/authentication-service/app/services"
 	"github.com/shaikrasheed99/authentication-service/configs"
-	"github.com/shaikrasheed99/authentication-service/database"
-	"github.com/shaikrasheed99/authentication-service/handlers"
-	"github.com/shaikrasheed99/authentication-service/repositories"
-	"github.com/shaikrasheed99/authentication-service/routes"
-	"github.com/shaikrasheed99/authentication-service/services"
+	"github.com/shaikrasheed99/authentication-service/persistence/database"
+	"github.com/shaikrasheed99/authentication-service/persistence/repositories"
 )
 
 func main() {
