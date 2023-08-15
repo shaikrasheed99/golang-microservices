@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/shaikrasheed99/broker-service/constants"
-	"github.com/shaikrasheed99/broker-service/helpers"
+	"github.com/shaikrasheed99/broker-service/utils/constants"
+	"github.com/shaikrasheed99/broker-service/utils/helpers"
 )
 
 type IBrokerHandler interface {

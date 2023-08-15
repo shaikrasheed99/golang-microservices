@@ -8,8 +8,8 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
-	"github.com/shaikrasheed99/broker-service/constants"
-	"github.com/shaikrasheed99/broker-service/responses"
+	"github.com/shaikrasheed99/broker-service/app/models/responses"
+	"github.com/shaikrasheed99/broker-service/utils/constants"
 	"github.com/stretchr/testify/assert"
 )
 

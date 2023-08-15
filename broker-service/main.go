@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/shaikrasheed99/broker-service/handlers"
-	"github.com/shaikrasheed99/broker-service/routes"
+	"github.com/shaikrasheed99/broker-service/app/handlers"
+	"github.com/shaikrasheed99/broker-service/app/routes"
 )
 
 func main() {

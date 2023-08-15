@@ -4,8 +4,8 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
-	"github.com/shaikrasheed99/broker-service/constants"
-	"github.com/shaikrasheed99/broker-service/handlers"
+	"github.com/shaikrasheed99/broker-service/app/handlers"
+	"github.com/shaikrasheed99/broker-service/utils/constants"
 )
 
 func RegisterRoutes(engine *gin.Engine, h handlers.IBrokerHandler) {
