@@ -67,3 +67,51 @@ func TestAuthService_SaveUser(t *testing.T) {
 		mockRepo.AssertExpectations(t)
 	})
 }
+
+func TestAuthService_LoginUser(t *testing.T) {
+	userMock := models.User{
+		ID:       1,
+		Username: "test",
+		Password: "test",
+		Email:    "test@gmail.com",
+	}
+
+	t.Run("should be able to login user", func(t *testing.T) {
+		mockRepo := new(mocks.IAuthRepository)
+		mockRepo.On("FindUserByUsername", userMock.Username).Return(userMock, nil)
+
+		authService := NewAuthService(mockRepo)
+		user, err := authService.LoginUser(userMock.Username)
+
+		assert.NoError(t, err)
+		assert.Equal(t, user.Username, userMock.Username)
+		assert.Equal(t, user.Password, userMock.Password)
+		assert.Equal(t, user.Email, userMock.Email)
+		mockRepo.AssertExpectations(t)
+	})
+
+	t.Run("should not be able to login user when user is not present", func(t *testing.T) {
+		mockRepo := new(mocks.IAuthRepository)
+		mockRepo.On("FindUserByUsername", userMock.Username).Return(userMock, gorm.ErrRecordNotFound)
+
+		authService := NewAuthService(mockRepo)
+		_, err := authService.LoginUser(userMock.Username)
+
+		assert.Error(t, err)
+		assert.Equal(t, constants.ErrUserNotFound, err.Error())
+		mockRepo.AssertExpectations(t)
+	})
+
+	t.Run("should not be able to login user when error from repo", func(t *testing.T) {
+		dbError := errors.New("error from db")
+		mockRepo := new(mocks.IAuthRepository)
+		mockRepo.On("FindUserByUsername", userMock.Username).Return(userMock, dbError)
+
+		authService := NewAuthService(mockRepo)
+		_, err := authService.LoginUser(userMock.Username)
+
+		assert.Error(t, err)
+		assert.Equal(t, dbError.Error(), err.Error())
+		mockRepo.AssertExpectations(t)
+	})
+}
