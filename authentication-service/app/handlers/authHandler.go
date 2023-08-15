@@ -49,7 +49,7 @@ func (ah *authHandler) SignupHandler(c *gin.Context) {
 		return
 	}
 
-	res := helpers.CreateSuccessResponse(http.StatusOK, "successfully saved user details", nil)
+	res := helpers.CreateSuccessResponse(http.StatusOK, constants.SuccessfullSignup, nil)
 
 	log.Println("[SignupHandler] Finished execution of signup handler")
 	c.JSON(http.StatusCreated, res)
@@ -78,11 +78,11 @@ func (ah *authHandler) LoginHandler(c *gin.Context) {
 		err := errors.New(constants.ErrPasswordMismatch)
 		log.Println("[LoginHandler]", err.Error())
 		errRes := helpers.CreateErrorResponse(http.StatusUnauthorized, err.Error())
-		c.JSON(http.StatusInternalServerError, errRes)
+		c.JSON(http.StatusUnauthorized, errRes)
 		return
 	}
 
-	res := helpers.CreateSuccessResponse(http.StatusOK, "successfully logged in", nil)
+	res := helpers.CreateSuccessResponse(http.StatusOK, constants.SuccessfullLogin, nil)
 
 	log.Println("[LoginHandler] Finished execution of login handler")
 	c.JSON(http.StatusCreated, res)
