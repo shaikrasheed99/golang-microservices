@@ -12,6 +12,30 @@ type IBrokerService struct {
 	mock.Mock
 }
 
+// HandleAuthLogin provides a mock function with given fields: _a0
+func (_m *IBrokerService) HandleAuthLogin(_a0 *requests.AuthLoginPayload) (string, error) {
+	ret := _m.Called(_a0)
+
+	var r0 string
+	var r1 error
+	if rf, ok := ret.Get(0).(func(*requests.AuthLoginPayload) (string, error)); ok {
+		return rf(_a0)
+	}
+	if rf, ok := ret.Get(0).(func(*requests.AuthLoginPayload) string); ok {
+		r0 = rf(_a0)
+	} else {
+		r0 = ret.Get(0).(string)
+	}
+
+	if rf, ok := ret.Get(1).(func(*requests.AuthLoginPayload) error); ok {
+		r1 = rf(_a0)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // HandleAuthSignup provides a mock function with given fields: _a0
 func (_m *IBrokerService) HandleAuthSignup(_a0 *requests.AuthSignupPayload) (string, error) {
 	ret := _m.Called(_a0)
