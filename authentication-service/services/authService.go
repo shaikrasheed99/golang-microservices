@@ -13,6 +13,7 @@ import (
 
 type IAuthService interface {
 	SaveUser(*requests.SignupRequest) (*models.User, error)
+	LoginUser(string) (*models.User, error)
 }
 
 type authService struct {
@@ -51,4 +52,23 @@ func (as *authService) SaveUser(user *requests.SignupRequest) (*models.User, err
 
 	log.Println("[SaveUserService] Returned saved user deatils from repository")
 	return &savedUser, nil
+}
+
+func (as *authService) LoginUser(username string) (*models.User, error) {
+	log.Println("[LoginUserService] Hitting login function in auth service")
+
+	user, err := as.ar.FindUserByUsername(username)
+	if err == gorm.ErrRecordNotFound {
+		errMessage := constants.ErrUserNotFound
+		log.Println("[LoginUserService]", errMessage)
+		return nil, errors.New(errMessage)
+	}
+
+	if err != nil {
+		log.Println("[LoginUserService]", err.Error())
+		return nil, err
+	}
+
+	log.Println("[LoginUserService] Returned user deatils from repository")
+	return &user, nil
 }

@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"errors"
 	"log"
 	"net/http"
 
@@ -13,6 +14,7 @@ import (
 
 type IAuthHandler interface {
 	SignupHandler(*gin.Context)
+	LoginHandler(*gin.Context)
 	Health(*gin.Context)
 }
 
@@ -50,6 +52,39 @@ func (ah *authHandler) SignupHandler(c *gin.Context) {
 	res := helpers.CreateSuccessResponse(http.StatusOK, "successfully saved user details", nil)
 
 	log.Println("[SignupHandler] Finished execution of signup handler")
+	c.JSON(http.StatusCreated, res)
+}
+
+func (ah *authHandler) LoginHandler(c *gin.Context) {
+	log.Println("[LoginHandler] Hitting login handler function in auth handler")
+
+	var req *requests.LoginRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		log.Println("[LoginHandler]", err.Error())
+		errRes := helpers.CreateErrorResponse(http.StatusBadRequest, err.Error())
+		c.JSON(http.StatusBadRequest, errRes)
+		return
+	}
+
+	user, err := ah.as.LoginUser(req.Username)
+	if err != nil {
+		log.Println("[LoginHandler]", err.Error())
+		errRes := helpers.CreateErrorResponse(http.StatusInternalServerError, err.Error())
+		c.JSON(http.StatusInternalServerError, errRes)
+		return
+	}
+
+	if req.Password != user.Password {
+		err := errors.New(constants.ErrPasswordMismatch)
+		log.Println("[LoginHandler]", err.Error())
+		errRes := helpers.CreateErrorResponse(http.StatusUnauthorized, err.Error())
+		c.JSON(http.StatusInternalServerError, errRes)
+		return
+	}
+
+	res := helpers.CreateSuccessResponse(http.StatusOK, "successfully logged in", nil)
+
+	log.Println("[LoginHandler] Finished execution of login handler")
 	c.JSON(http.StatusCreated, res)
 }
 
