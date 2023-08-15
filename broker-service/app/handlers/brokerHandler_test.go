@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -26,8 +25,6 @@ func TestBrokerHandler_Health(t *testing.T) {
 
 		var resBody responses.SuccessResponse
 		_ = json.Unmarshal(res.Body.Bytes(), &resBody)
-
-		fmt.Println("message is")
 
 		assert.Equal(t, constants.Success, resBody.Status)
 		assert.Equal(t, http.StatusText(http.StatusOK), resBody.Code)

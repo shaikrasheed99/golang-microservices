@@ -4,12 +4,15 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/shaikrasheed99/broker-service/app/handlers"
 	"github.com/shaikrasheed99/broker-service/app/routes"
+	"github.com/shaikrasheed99/broker-service/app/services"
 )
 
 func main() {
 	app := gin.New()
 
-	handler := handlers.NewBrokerHandler()
+	bs := services.NewBrokerService()
+
+	handler := handlers.NewBrokerHandler(bs)
 
 	routes.RegisterRoutes(app, handler)
 

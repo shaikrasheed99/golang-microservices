@@ -1,6 +1,12 @@
 package constants
 
 const (
-	Success = "success"
-	UP      = "Broker service is UP!"
+	Success    = "success"
+	Error      = "error"
+	AuthAction = "auth"
+	UP         = "Broker service is UP!"
+)
+
+const (
+	ErrAuthService = "error from auth service"
 )

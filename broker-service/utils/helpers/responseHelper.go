@@ -18,3 +18,24 @@ func CreateSuccessResponse(code int, message string, data interface{}) responses
 		Data:    data,
 	}
 }
+
+func CreateErrorResponse(code int, message string) responses.ErrorResponse {
+	log.Println("[CreateErrorResponseHelper] Creating error response")
+
+	return responses.ErrorResponse{
+		Status:  constants.Error,
+		Code:    http.StatusText(code),
+		Message: message,
+	}
+}
+
+func CreateServiceErrorResponse(code int, message string, reason string) responses.ServiceErrorResponse {
+	log.Println("[CreateServiceErrorResponseHelper] Creating service error response")
+
+	return responses.ServiceErrorResponse{
+		Status:  constants.Error,
+		Code:    http.StatusText(code),
+		Message: message,
+		Reason:  reason,
+	}
+}
