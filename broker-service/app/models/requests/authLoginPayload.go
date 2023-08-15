@@ -1,7 +1,6 @@
 package requests
 
-type AuthSignupPayload struct {
+type AuthLoginPayload struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
-	Email    string `json:"email"`
 }

@@ -18,7 +18,7 @@ import (
 
 func TestBrokerHandler_Handle(t *testing.T) {
 	req := &requests.RequestPayload{
-		Action: constants.AuthAction,
+		Action: constants.AuthSignupAction,
 		Signup: requests.AuthSignupPayload{
 			Username: "test",
 			Password: "test",
@@ -53,7 +53,7 @@ func TestBrokerHandler_Handle(t *testing.T) {
 
 	t.Run("should not be able to handle auth signup api when request payload is invalid", func(t *testing.T) {
 		invalidReq := &requests.RequestPayload{
-			Action: constants.AuthAction,
+			Action: constants.AuthSignupAction,
 			Signup: requests.AuthSignupPayload{
 				Username: "test",
 				Password: "test",
