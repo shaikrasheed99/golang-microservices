@@ -6,6 +6,6 @@ const (
 )
 
 const (
-	AuthSignupServiceAPI = "http://localhost:8001/signup"
-	AuthLoginServiceAPI  = "http://localhost:8001/login"
+	AuthSignupServiceAPI = "http://authentication-service:8001/signup"
+	AuthLoginServiceAPI  = "http://authentication-service:8001/login"
 )
