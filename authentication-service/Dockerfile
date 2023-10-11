@@ -1,14 +1,17 @@
-FROM golang:latest
+FROM golang:alpine as builder
 
 WORKDIR /app
 
-COPY go.mod .
-COPY go.sum .
+COPY go.mod go.sum .
 
 RUN go mod tidy
 
 COPY . . 
 
-ENTRYPOINT ["go", "run"]
+RUN go build -o buildFile
 
-CMD ["main.go"]
+FROM alpine
+
+COPY --from=builder /app/buildFile buildFile
+
+CMD ["./buildFile"]
