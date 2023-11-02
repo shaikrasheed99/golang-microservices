@@ -1,6 +1,10 @@
+import "./App.css"
+
 function App() {
   return (
-    <div>Hello World</div>
+    <div className="container">
+      <div className="header">Microservices Applicaiton</div>
+    </div>
   )
 }
 
