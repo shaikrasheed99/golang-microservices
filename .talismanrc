@@ -1,0 +1,6 @@
+fileignoreconfig:
+- filename: frontend/src/vite-env.d.ts
+  checksum: c4ad2e62d336ab400ac43f0d59274e605dbc02afb728cd938202b5bb109a8e75
+- filename: frontend/pnpm-lock.yaml
+  checksum: d088ab97fc3df0edb434be462dd9f78b94a0840d962046474b5f8d3df64627f8
+version: ""
