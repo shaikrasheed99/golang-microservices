@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+     - "3000:3000"
+
   broker-service:
     container_name: broker-service
     build:
