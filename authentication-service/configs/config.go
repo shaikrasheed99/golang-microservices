@@ -22,7 +22,6 @@ func LoadConfigs() error {
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("[LoadConfigs]", err.Error())
-		return err
 	}
 
 	DB_HOST = os.Getenv("DB_HOST")
