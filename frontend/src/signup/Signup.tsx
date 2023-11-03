@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import "./Signup.css"
+import { RequestBody } from "../utils/helper";
 
-const Signup = () => {
+interface SignupProps {
+    setRequestBody: React.Dispatch<SetStateAction<RequestBody | undefined>>
+}
+
+const Signup = ({setRequestBody}: SignupProps) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -23,10 +28,16 @@ const Signup = () => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
-        console.log(username);
-        console.log(password);
-        console.log(email);
+
+        const requestBody: RequestBody = {
+            action: "auth_signup",
+            signup: {
+                username: username,
+                password: password,
+                email: email
+            }
+        }
+        setRequestBody(requestBody);
 
         setUsername("");
         setPassword("");

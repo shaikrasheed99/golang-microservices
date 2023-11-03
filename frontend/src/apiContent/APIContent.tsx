@@ -1,34 +1,20 @@
+import { RequestBody, Response, convertRequestBodyToFormattedCode, convertResponseToFormattedCode } from "../utils/helper";
 import "./APIContent.css"
 
-const APIContent = () => {
-    let requestBody = `
-    {
-        "action": "auth_signup",
-        "signup": {
-            "username": "ironman1",
-            "password": "ironman@123",
-            "email": "ironman@gmail.com"
-        }
-    }
-    `;
+interface APIContentProps {
+    requestBody: RequestBody | undefined,
+    response: Response | undefined
+}
 
-    let response = `
-    {
-        "status": "success",
-        "code": "OK",
-        "message": "successfully saved user details",
-        "data": null
-    }
-    `;
-
+const APIContent = ({requestBody, response}: APIContentProps) => {
     return (
         <div className="api-content">
             <div className="box request-body">
                 <p className="title">Request Body</p>
                 <hr />
                 <pre className="formatted-code">
-                    {requestBody === undefined && <p className="empty">Didn't send any request yet!</p>}
-                    {requestBody !== undefined && <code>{requestBody}</code>}
+                    {requestBody === undefined && <p className="empty">Didn't send request yet!</p>}
+                    {requestBody !== undefined && <code>{convertRequestBodyToFormattedCode(requestBody)}</code>}
                 </pre>
             </div>
 
@@ -37,7 +23,7 @@ const APIContent = () => {
                 <hr />
                 <pre className="formatted-code">
                     {response === undefined && <p className="empty">No response yet!</p>}
-                    {response !== undefined && <code>{response}</code>}
+                    {response !== undefined && <code>{convertResponseToFormattedCode(response)}</code>}
                 </pre>
             </div>
         </div>
