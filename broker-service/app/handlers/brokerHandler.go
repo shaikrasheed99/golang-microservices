@@ -47,6 +47,8 @@ func (bh *brokerHandler) Handle(c *gin.Context) {
 		serviceRes, err = bh.bs.HandleAuthSignup(&req.Signup)
 	case constants.AuthLoginAction:
 		serviceRes, err = bh.bs.HandleAuthLogin(&req.Login)
+	default:
+		err = errors.New(constants.ErrInvalidAction)
 	}
 
 	if err != nil {

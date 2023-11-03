@@ -9,5 +9,6 @@ const (
 )
 
 const (
-	ErrAuthService = "error from auth service"
+	ErrInvalidAction = "invalid action"
+	ErrAuthService   = "error from auth service"
 )
