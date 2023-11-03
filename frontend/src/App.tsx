@@ -3,6 +3,7 @@ import "./App.css"
 import Navbar from "./navbar/Navbar"
 import Signup from "./signup/Signup"
 import Login from "./login/Login"
+import APIContent from "./apiContent/APIContent"
 
 const App = () => {
   const [hideSignup, setHideSignup] = useState(false);
@@ -18,6 +19,7 @@ const App = () => {
         {!hideSignup && <Signup />}
         {!hideLogin && <Login />}
         <hr />
+        <APIContent />
       </div>
     </div>
   )
