@@ -2,18 +2,25 @@ import { SetStateAction } from "react";
 import "./Navbar.css"
 
 interface NavbarProps {
-    setHideSignup: React.Dispatch<SetStateAction<boolean>>
+    hideSignup: React.Dispatch<SetStateAction<boolean>>
+    hideLogin: React.Dispatch<SetStateAction<boolean>>
 }
 
-const Navbar = ({setHideSignup} : NavbarProps) => {
+const Navbar = ({hideSignup, hideLogin} : NavbarProps) => {
     const handleSignupClick = () => {
-        setHideSignup(false)
+        hideSignup(false);
+        hideLogin(true);
+    }
+
+    const handleLoginClick = () => {
+        hideLogin(false);
+        hideSignup(true);
     }
 
     return (
         <div className="btn-container">
             <button className="btn" onClick={handleSignupClick}>Signup</button>
-            <button className="btn">Login</button>
+            <button className="btn" onClick={handleLoginClick}>Login</button>
         </div>
     );
 }

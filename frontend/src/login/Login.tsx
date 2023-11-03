@@ -1,10 +1,8 @@
 import { useState } from "react";
-import "./Signup.css"
 
-const Signup = () => {
+const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
 
     const handleUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
@@ -16,21 +14,14 @@ const Signup = () => {
         setPassword(value);
     }
 
-    const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setEmail(value);
-    }
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
         console.log(username);
         console.log(password);
-        console.log(email);
 
         setUsername("");
         setPassword("");
-        setEmail("");
     }
 
     return ( 
@@ -44,15 +35,10 @@ const Signup = () => {
                 <label htmlFor="password">Password:</label>
                 <input type="password" id="password" onChange={handlePassword} value={password}/>
             </div>
-
-            <div className="email">
-                <label htmlFor="email">Email:</label>
-                <input type="text" id="email" onChange={handleEmail} value={email}/>
-            </div>
             
-            <input className="submit" type="submit" value="Signup"/>
+            <input className="submit" type="submit" value="Login"/>
         </form>
     );
 }
  
-export default Signup;
+export default Login;
