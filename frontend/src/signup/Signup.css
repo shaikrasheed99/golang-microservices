@@ -1,0 +1,32 @@
+.signup {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup > * > label {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.signup > * > input {
+    font-size: 18px;
+    margin: 5px;
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 20px;
+    outline: none;
+}
+
+.submit {
+    font-size: 15px;
+    font-weight: bold;
+    width: fit-content;
+    margin: 10px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    background-color: honeydew;
+    cursor: pointer;
+}

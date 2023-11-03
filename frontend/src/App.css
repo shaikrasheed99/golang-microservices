@@ -7,10 +7,18 @@
     box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.5);
 }
 
-.header {
+.container .header {
     font-size: 30px;
     font-weight: bold;
     width: fit-content;
     margin: 10px auto;
     padding: 10px;
+}
+
+.container .content {
+    margin: 0 2vw;
+    padding: 2vw;
+    border: 1px solid;
+    border-radius: 30px;
+    background-color: #efefef;
 }

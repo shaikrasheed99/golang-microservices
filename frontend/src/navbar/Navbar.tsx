@@ -1,9 +1,18 @@
+import { SetStateAction } from "react";
 import "./Navbar.css"
 
-const Navbar = () => {
+interface NavbarProps {
+    setHideSignup: React.Dispatch<SetStateAction<boolean>>
+}
+
+const Navbar = ({setHideSignup} : NavbarProps) => {
+    const handleSignupClick = () => {
+        setHideSignup(false)
+    }
+
     return (
         <div className="btn-container">
-            <button className="btn">Signup</button>
+            <button className="btn" onClick={handleSignupClick}>Signup</button>
             <button className="btn">Login</button>
         </div>
     );
