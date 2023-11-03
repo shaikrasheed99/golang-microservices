@@ -9,4 +9,6 @@ fileignoreconfig:
   checksum: 52b70c8e02adb911b9a0dff10f1939ec6c8a18b1a02a40cf6882e3a3f95b1426
 - filename: frontend/src/apiContent/APIContent.tsx
   checksum: 630245655cce322acdeed5ca535f2bb3ae0b938fef873b415242eaf085797602
+- filename: broker-service/go.sum
+  checksum: 4ba8c0fa2207faba789f3d38befd8474488b71d356ae7f51db44299289e26c46
 version: ""
