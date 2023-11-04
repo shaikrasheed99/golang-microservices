@@ -6,7 +6,7 @@ fileignoreconfig:
 - filename: frontend/src/signup/Signup.tsx
   checksum: 511bab21f72e33051844491763a857489171f180966f1909e032b363bf6dd4d4
 - filename: frontend/src/login/Login.tsx
-  checksum: 52b70c8e02adb911b9a0dff10f1939ec6c8a18b1a02a40cf6882e3a3f95b1426
+  checksum: 8bf636fdbcdf8410cd96faf3a94c7ebe09dd092c33c45f5a9c9a66f3ade86af4
 - filename: frontend/src/apiContent/APIContent.tsx
   checksum: 630245655cce322acdeed5ca535f2bb3ae0b938fef873b415242eaf085797602
 - filename: broker-service/go.sum

@@ -51,7 +51,7 @@ const App = () => {
       
       <div className="content">
         {!hideSignup && <Signup setRequestBody={setRequestBody} />}
-        {!hideLogin && <Login />}
+        {!hideLogin && <Login setRequestBody={setRequestBody} />}
         <hr />
         <APIContent requestBody={requestBody} response={response} />
       </div>
@@ -59,4 +59,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;

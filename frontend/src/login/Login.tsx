@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
+import { RequestBody } from "../utils/helper";
 
-const Login = () => {
+interface LoginProps {
+    setRequestBody: React.Dispatch<SetStateAction<RequestBody | undefined>>
+}
+
+const Login = ({ setRequestBody }: LoginProps) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -16,15 +21,21 @@ const Login = () => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
-        console.log(username);
-        console.log(password);
+
+        const requestBody: RequestBody = {
+            action: "auth_login",
+            login: {
+                username: username,
+                password: password
+            }
+        }
+        setRequestBody(requestBody);
 
         setUsername("");
         setPassword("");
     }
 
-    return ( 
+    return (
         <form className="signup" onSubmit={handleSubmit}>
             <div className="username">
                 <label htmlFor="username">Username:</label>
@@ -33,12 +44,12 @@ const Login = () => {
 
             <div className="password">
                 <label htmlFor="password">Password:</label>
-                <input type="password" id="password" onChange={handlePassword} value={password}/>
+                <input type="password" id="password" onChange={handlePassword} value={password} />
             </div>
-            
-            <input className="submit" type="submit" value="Login"/>
+
+            <input className="submit" type="submit" value="Login" />
         </form>
     );
 }
- 
+
 export default Login;
