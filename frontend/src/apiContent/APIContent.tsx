@@ -6,7 +6,7 @@ interface APIContentProps {
     response: Response | undefined
 }
 
-const APIContent = ({requestBody, response}: APIContentProps) => {
+const APIContent = ({ requestBody, response }: APIContentProps) => {
     return (
         <div className="api-content">
             <div className="box request-body">
@@ -29,5 +29,5 @@ const APIContent = ({requestBody, response}: APIContentProps) => {
         </div>
     );
 }
- 
+
 export default APIContent;

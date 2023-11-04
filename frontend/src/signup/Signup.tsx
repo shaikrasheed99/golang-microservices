@@ -6,7 +6,7 @@ interface SignupProps {
     setRequestBody: React.Dispatch<SetStateAction<RequestBody | undefined>>
 }
 
-const Signup = ({setRequestBody}: SignupProps) => {
+const Signup = ({ setRequestBody }: SignupProps) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -44,7 +44,7 @@ const Signup = ({setRequestBody}: SignupProps) => {
         setEmail("");
     }
 
-    return ( 
+    return (
         <form className="signup" onSubmit={handleSubmit}>
             <div className="username">
                 <label htmlFor="username">Username:</label>
@@ -53,17 +53,17 @@ const Signup = ({setRequestBody}: SignupProps) => {
 
             <div className="password">
                 <label htmlFor="password">Password:</label>
-                <input type="password" id="password" onChange={handlePassword} value={password}/>
+                <input type="password" id="password" onChange={handlePassword} value={password} />
             </div>
 
             <div className="email">
                 <label htmlFor="email">Email:</label>
-                <input type="text" id="email" onChange={handleEmail} value={email}/>
+                <input type="text" id="email" onChange={handleEmail} value={email} />
             </div>
-            
-            <input className="submit" type="submit" value="Signup"/>
+
+            <input className="submit" type="submit" value="Signup" />
         </form>
     );
 }
- 
+
 export default Signup;

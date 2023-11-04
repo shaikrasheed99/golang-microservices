@@ -9,7 +9,7 @@ interface NavbarProps {
     setResponse: React.Dispatch<SetStateAction<Response | undefined>>
 }
 
-const Navbar = ({hideSignup, hideLogin, setRequestBody, setResponse} : NavbarProps) => {
+const Navbar = ({ hideSignup, hideLogin, setRequestBody, setResponse }: NavbarProps) => {
     const handleSignupClick = () => {
         hideSignup(false);
         hideLogin(true);
@@ -31,5 +31,5 @@ const Navbar = ({hideSignup, hideLogin, setRequestBody, setResponse} : NavbarPro
         </div>
     );
 }
- 
+
 export default Navbar;

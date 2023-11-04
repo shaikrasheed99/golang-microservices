@@ -1,16 +1,16 @@
 export type RequestBody = {
     action: String,
     signup?: {
-      username: String,
-      password: String,
-      email: String
+        username: String,
+        password: String,
+        email: String
     },
-    login?:{
+    login?: {
         username: String,
         password: String
     }
 }
-  
+
 export type Response = {
     status: String,
     code: String,

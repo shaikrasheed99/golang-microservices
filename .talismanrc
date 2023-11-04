@@ -4,7 +4,7 @@ fileignoreconfig:
 - filename: frontend/pnpm-lock.yaml
   checksum: d088ab97fc3df0edb434be462dd9f78b94a0840d962046474b5f8d3df64627f8
 - filename: frontend/src/signup/Signup.tsx
-  checksum: 511bab21f72e33051844491763a857489171f180966f1909e032b363bf6dd4d4
+  checksum: 7b8a3329ef71a5b118e309f98584c0c11a0db144fec85db723d23c2ed6c3fb45
 - filename: frontend/src/login/Login.tsx
   checksum: 8bf636fdbcdf8410cd96faf3a94c7ebe09dd092c33c45f5a9c9a66f3ade86af4
 - filename: frontend/src/apiContent/APIContent.tsx

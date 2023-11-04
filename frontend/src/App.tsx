@@ -48,7 +48,7 @@ const App = () => {
       <div className="header">Microservices Applicaiton</div>
 
       <Navbar hideSignup={setHideSignup} hideLogin={setHideLogin} setRequestBody={setRequestBody} setResponse={setResponse} />
-      
+
       <div className="content">
         {!hideSignup && <Signup setRequestBody={setRequestBody} />}
         {!hideLogin && <Login setRequestBody={setRequestBody} />}
